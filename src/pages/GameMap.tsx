@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/stores/authStore";
 import { useGameStore } from "@/stores/gameStore";
 import { useMonsterStore } from "@/stores/monsterStore";
-import { Monster } from "@/types";
+// Removed unused Monster import
 import { weatherService } from "@/services/weather";
 import { createLocationContext } from "@/utils/locationUtils";
 import { monsterSpawningService } from "@/services/monsterSpawning";
@@ -20,7 +20,7 @@ const GameMap = () => {
     addNearbyMonster,
     removeNearbyMonster,
   } = useGameStore();
-  const { getTotalCount, addMonster } = useMonsterStore();
+  const { getTotalCount } = useMonsterStore();
 
   const [userLocation, setUserLocation] = useState<{
     lat: number;

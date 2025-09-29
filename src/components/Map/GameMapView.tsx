@@ -11,7 +11,6 @@ import {
 import L from "leaflet";
 import { MonsterSpawn, LocationContext } from "@/types";
 import { useAuthStore } from "@/stores/authStore";
-import { useGameStore } from "@/stores/gameStore";
 
 // Fix for default markers in Leaflet with Vite
 delete (L.Icon.Default.prototype as any)._getIconUrl;

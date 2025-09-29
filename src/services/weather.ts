@@ -1,7 +1,6 @@
-import axios from "axios";
 import { WeatherData } from "@/types";
 
-interface METWeatherResponse {
+interface _METWeatherResponse {
   type: string;
   geometry: {
     type: string;
@@ -47,9 +46,9 @@ interface METWeatherResponse {
 }
 
 class WeatherService {
-  private readonly baseUrl =
+  private readonly _baseUrl =
     "https://api.met.no/weatherapi/locationforecast/2.0";
-  private readonly userAgent =
+  private readonly _userAgent =
     "MonsterHunterPWA/1.0 (+https://your-app-domain.com contact@your-domain.com)";
 
   /**
@@ -66,7 +65,7 @@ class WeatherService {
   /**
    * Map MET Norway symbol codes to our simplified weather conditions
    */
-  private mapSymbolCodeToCondition(symbolCode: string): string {
+  private _mapSymbolCodeToCondition(symbolCode: string): string {
     // MET Norway uses detailed symbol codes like 'clearsky_day', 'rain_light', etc.
     if (symbolCode.includes("clearsky")) return "clear";
     if (symbolCode.includes("fair")) return "partly_cloudy";
@@ -109,7 +108,7 @@ class WeatherService {
   /**
    * Generate realistic fallback weather when API fails
    */
-  private generateFallbackWeather(lat: number, lng: number): WeatherData {
+  private generateFallbackWeather(lat: number, _lng: number): WeatherData {
     const absLat = Math.abs(lat);
     const season = this.getCurrentSeason();
     const time = this.getTimeOfDay();

@@ -124,7 +124,7 @@ class MonsterSpawningService {
    * Determine biome for a specific position
    */
   private determineBiomeForPosition(
-    position: { lat: number; lng: number },
+    _position: { lat: number; lng: number },
     locationContext: LocationContext
   ): BiomeType {
     // For now, use the same biome as the location context

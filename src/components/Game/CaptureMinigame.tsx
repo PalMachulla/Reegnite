@@ -38,7 +38,7 @@ const CaptureMinigame = ({
 
   const [isCharging, setIsCharging] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const animationRef = useRef<number | null>(null);
 
   // Difficulty based on monster and environment

@@ -3,7 +3,7 @@ import { useGameStore } from "@/stores/gameStore";
 import { useMonsterStore } from "@/stores/monsterStore";
 import CaptureMinigame from "@/components/Game/CaptureMinigame";
 import { geminiService } from "@/services/gemini";
-import { MonsterSpawn, Monster } from "@/types";
+import { Monster } from "@/types";
 
 const CaptureScreen = () => {
   const navigate = useNavigate();

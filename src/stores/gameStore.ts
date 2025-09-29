@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { GameState, MonsterSpawn, Monster } from "@/types";
+import { GameState, MonsterSpawn } from "@/types";
 
 interface GameStore extends GameState {
   setCurrentView: (view: GameState["currentView"]) => void;
