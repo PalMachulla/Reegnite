@@ -77,7 +77,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ["react", "react-dom"],
           map: ["leaflet", "react-leaflet"],
-          ai: ["@google/generative-ai"],
+          ai: ["@google/genai"],
         },
       },
     },
