@@ -1,56 +1,6 @@
 import { WeatherData } from "@/types";
 
-interface _METWeatherResponse {
-  type: string;
-  geometry: {
-    type: string;
-    coordinates: [number, number, number];
-  };
-  properties: {
-    meta: {
-      updated_at: string;
-      units: {
-        air_pressure_at_sea_level: string;
-        air_temperature: string;
-        cloud_area_fraction: string;
-        precipitation_amount: string;
-        relative_humidity: string;
-        wind_from_direction: string;
-        wind_speed: string;
-      };
-    };
-    timeseries: Array<{
-      time: string;
-      data: {
-        instant: {
-          details: {
-            air_pressure_at_sea_level: number;
-            air_temperature: number;
-            cloud_area_fraction: number;
-            relative_humidity: number;
-            wind_from_direction: number;
-            wind_speed: number;
-          };
-        };
-        next_1_hours?: {
-          summary: {
-            symbol_code: string;
-          };
-          details: {
-            precipitation_amount: number;
-          };
-        };
-      };
-    }>;
-  };
-}
-
 class WeatherService {
-  private readonly _baseUrl =
-    "https://api.met.no/weatherapi/locationforecast/2.0";
-  private readonly _userAgent =
-    "MonsterHunterPWA/1.0 (+https://your-app-domain.com contact@your-domain.com)";
-
   /**
    * Get current weather data for a location using fallback system
    * (MET Norway API has CORS restrictions in browser)
@@ -60,24 +10,6 @@ class WeatherService {
     const fallbackWeather = this.generateFallbackWeather(lat, lng);
     console.log("Generated fallback weather:", fallbackWeather);
     return fallbackWeather;
-  }
-
-  /**
-   * Map MET Norway symbol codes to our simplified weather conditions
-   */
-  private _mapSymbolCodeToCondition(symbolCode: string): string {
-    // MET Norway uses detailed symbol codes like 'clearsky_day', 'rain_light', etc.
-    if (symbolCode.includes("clearsky")) return "clear";
-    if (symbolCode.includes("fair")) return "partly_cloudy";
-    if (symbolCode.includes("partlycloud")) return "partly_cloudy";
-    if (symbolCode.includes("cloud")) return "cloudy";
-    if (symbolCode.includes("rain")) return "rainy";
-    if (symbolCode.includes("snow")) return "snowy";
-    if (symbolCode.includes("sleet")) return "sleet";
-    if (symbolCode.includes("fog")) return "foggy";
-    if (symbolCode.includes("thunder")) return "thunderstorm";
-
-    return "partly_cloudy"; // Default fallback
   }
 
   /**
