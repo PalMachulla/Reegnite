@@ -1,0 +1,138 @@
+/* Import Leaflet CSS first */
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  .game-button {
+    @apply bg-primary-500 hover:bg-primary-600 active:bg-primary-700 
+           text-white font-semibold py-3 px-6 rounded-xl 
+           transition-all duration-200 transform hover:scale-105 
+           shadow-game hover:shadow-game-lg;
+  }
+  
+  .game-button-secondary {
+    @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 
+           text-white font-semibold py-3 px-6 rounded-xl 
+           transition-all duration-200 transform hover:scale-105 
+           shadow-game hover:shadow-game-lg;
+  }
+  
+  .game-card {
+    @apply bg-dark-800/80 backdrop-blur-md border border-dark-700 
+           rounded-2xl p-6 shadow-game-lg;
+  }
+  
+  .monster-card {
+    @apply game-card transform transition-all duration-300 
+           hover:scale-105 hover:shadow-game-lg;
+  }
+  
+  .capture-button {
+    @apply game-button animate-pulse-slow relative overflow-hidden;
+  }
+  
+  .capture-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+           transform -skew-x-12 -translate-x-full transition-transform duration-700;
+  }
+  
+  .capture-button:hover::before {
+    @apply translate-x-full;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-4 border-primary-200 border-t-primary-500;
+  }
+  
+  .map-container {
+    @apply relative w-full h-full rounded-xl overflow-hidden shadow-game-lg;
+  }
+  
+  .game-input {
+    @apply bg-dark-700 border border-dark-600 rounded-lg px-4 py-3 
+           text-white placeholder-dark-400 focus:outline-none 
+           focus:ring-2 focus:ring-primary-500 focus:border-transparent 
+           transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .gradient-primary {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  }
+  
+  .gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+  
+  .gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-400;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  @apply rounded-xl;
+  height: 400px;
+  width: 100%;
+}
+
+.leaflet-control-attribution {
+  @apply bg-dark-800/80 text-white text-xs;
+}
+
+.leaflet-control-zoom a {
+  @apply bg-dark-800/80 border-dark-600 text-white;
+}
+
+.leaflet-control-zoom a:hover {
+  @apply bg-primary-500;
+} 
