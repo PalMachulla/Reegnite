@@ -69,7 +69,7 @@ ${imageDescription ? `VISUAL DESCRIPTION: ${imageDescription}` : ""}
 
 Generate a JSON response with the following structure:
 {
-  "name": "Creative monster name reflecting the environment",
+  "name": "Creative, unique monster name reflecting the environment - NEVER use generic names like 'Mysterious Creature', 'Unknown', or 'Wild Beast'. Make it memorable and specific to the ${biome} biome.",
   "description": "2-3 sentence description of the monster's appearance and behavior",
   "element": "Choose from: fire, water, earth, air, shadow, light, ice, lightning",
   "power": "Number between 10-100 based on rarity and environment danger",
@@ -164,7 +164,8 @@ function getLowPolyStylePrompts(): string {
 - Fantasy creature aesthetic with magical elements
 - Lighting should be simple but effective
 - No overly complex details - focus on iconic shape and color
-- Should look appealing in a small card format`;
+- Should look appealing in a small card format
+- IMPORTANT: NO circular masks, frames, or borders - show the full creature in rectangular format`;
 }
 
 /**

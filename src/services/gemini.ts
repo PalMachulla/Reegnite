@@ -131,7 +131,7 @@ export class GeminiService {
         contents: `Generate an image of: ${imagePrompt}
 
 Style: Low-poly 3D game art, vibrant colors, fantasy creature design, clean geometric shapes, mobile game aesthetic.
-Output: Single monster creature image, centered, transparent background preferred.`,
+Output: Single monster creature image, centered, FULL IMAGE without any circular masks, frames, or borders. The entire creature should be visible in a rectangular format suitable for a card game.`,
         config: {
           temperature: 0.8,
           maxOutputTokens: 4096,
@@ -246,13 +246,15 @@ Keep the description concise but vivid.`;
         console.warn("Failed to parse monster data as JSON, using fallback");
         return {
           name: "Mysterious Creature",
-          description: response || "A creature of unknown origin.",
-          element: "unknown",
+          description:
+            response || "A fascinating creature with unique characteristics.",
+          element: "earth",
           power: 50,
           age: Math.floor(Math.random() * 100) + 1,
           size: "medium",
           rarity: "common",
-          lore: response || "No lore available.",
+          lore:
+            response || "This creature's origins remain shrouded in mystery.",
         };
       }
     } catch (error) {
@@ -262,52 +264,24 @@ Keep the description concise but vivid.`;
   }
 
   /**
-   * Generate a complete monster with both image and data
+   * Generate only the monster image (text generation handled separately)
    */
-  async generateCompleteMonster(
+  async generateMonsterImageOnly(
     locationContext: LocationContext
-  ): Promise<MonsterGenerationResponse> {
+  ): Promise<string> {
     try {
-      console.log("🤖 Starting complete monster generation...");
+      console.log("🤖 Starting image-only generation...");
 
-      // Generate image and description in parallel for efficiency
-      const [imageUrl, imageDescription] = await Promise.all([
-        this.generateMonsterImage(locationContext),
-        this.generateMonsterImageDescription(locationContext),
-      ]);
+      const imageUrl = await this.generateMonsterImage(locationContext);
 
       console.log(
         "🖼️ Image generation result:",
         imageUrl ? "✅ Success" : "❌ Failed"
       );
-      console.log(
-        "📝 Description generated:",
-        imageDescription.substring(0, 100) + "..."
-      );
 
-      // Generate monster data using the image description for consistency
-      const monsterData = await this.generateMonsterData(
-        locationContext,
-        imageDescription
-      );
-
-      console.log("📊 Monster data generated:", monsterData);
-
-      return {
-        imageUrl: imageUrl,
-        monsterData: {
-          name: monsterData.name || "Unknown Creature",
-          description: monsterData.description || "A mysterious creature.",
-          element: monsterData.element || "unknown",
-          power: monsterData.power || 50,
-          age: monsterData.age || 1,
-          size: monsterData.size || "medium",
-          rarity: monsterData.rarity || "common",
-          lore: monsterData.lore || "No lore available.",
-        },
-      };
+      return imageUrl;
     } catch (error) {
-      console.error("Error generating complete monster:", error);
+      console.error("Error generating monster image:", error);
       throw error;
     }
   }
