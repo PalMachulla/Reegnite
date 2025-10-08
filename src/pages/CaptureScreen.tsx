@@ -212,6 +212,8 @@ function generateLocationBasedLore(
 }
 
 const CaptureScreen = () => {
+  // Version 2.1 - Enhanced monster generation with separated AI services
+  console.log("🎮 CaptureScreen v2.1: Enhanced monster generation active");
   const navigate = useNavigate();
   const location = useLocation();
 
