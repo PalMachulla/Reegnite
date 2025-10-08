@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { LocationContext, MonsterGenerationResponse } from "@/types";
+import { LocationContext } from "@/types";
 import {
   buildMonsterImagePrompt,
   buildMonsterDataPrompt,

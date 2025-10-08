@@ -64,7 +64,7 @@ export class TextGenerationService {
 
     await this.waitForRateLimit();
 
-    const { biome, weather, nearbyFeatures } = locationContext;
+    const { biome, weather } = locationContext;
 
     const prompt = `Create detailed monster data for a creature found in ${biome} during ${
       weather.time
@@ -75,7 +75,6 @@ ENVIRONMENT CONTEXT:
 - Weather: ${weather.condition}, ${weather.temperature}°C, ${
       weather.humidity
     }% humidity
-- Features: ${nearbyFeatures.join(", ")}
 
 Generate a JSON response with the following structure:
 {
@@ -178,7 +177,7 @@ Ensure the monster feels authentic to its ${biome} environment.`;
 
     await this.waitForRateLimit();
 
-    const { biome, weather, nearbyFeatures } = locationContext;
+    const { biome, weather } = locationContext;
 
     const prompt = `Describe a monster that would live in a ${biome} biome during ${weather.condition} weather at ${weather.temperature}°C.
 

@@ -106,7 +106,7 @@ function generateLocationBasedName(
 
 function generateLocationBasedDescription(
   biome: string,
-  locationContext: LocationContext
+  _locationContext: LocationContext
 ): string {
   const descriptions = {
     coast:
@@ -196,14 +196,14 @@ function generateLocationBasedSize(biome: string): MonsterSize {
 
 function generateLocationBasedLore(
   biome: string,
-  locationContext: LocationContext
+  _locationContext: LocationContext
 ): string {
   const loreTemplates = {
-    coast: `Ancient legends speak of this coastal guardian emerging from the depths during ${locationContext.weather.condition} weather. When the temperature reaches ${locationContext.weather.temperature}°C, it reveals itself to beachcombers, sharing secrets of the ocean's mysteries and forming bonds that last beyond the tides.`,
-    forest: `Deep in the ${biome} heartlands, this creature has watched over the trees for centuries. During ${locationContext.weather.season}, when ${locationContext.weather.condition} weather brings life to the forest floor, it emerges from its moss-covered sanctuary to guide lost travelers and protect the ancient groves.`,
-    mountain: `High in the ${biome} peaks, this resilient creature has adapted to the harsh conditions. When ${locationContext.weather.condition} weather sweeps across the mountains at ${locationContext.weather.temperature}°C, it scales the highest summits, seeking rare crystals and sharing mountain wisdom with those brave enough to climb.`,
-    lake: `Beneath the ${biome} waters, this peaceful spirit has dwelled for generations. During ${locationContext.weather.season}, when the lake reflects the ${locationContext.weather.condition} sky, it surfaces to bring tranquility to troubled souls and share the deep wisdom of still waters.`,
-    river: `Flowing through the ${biome} valleys, this swift creature has traveled every bend and rapid. When ${locationContext.weather.condition} weather fills the river with ${locationContext.weather.temperature}°C water, it guides wayward travelers downstream, teaching the art of going with the flow.`,
+    coast: `Ancient legends speak of this coastal guardian emerging from the depths during ${_locationContext.weather.condition} weather. When the temperature reaches ${_locationContext.weather.temperature}°C, it reveals itself to beachcombers, sharing secrets of the ocean's mysteries and forming bonds that last beyond the tides.`,
+    forest: `Deep in the ${biome} heartlands, this creature has watched over the trees for centuries. During ${_locationContext.weather.season}, when ${_locationContext.weather.condition} weather brings life to the forest floor, it emerges from its moss-covered sanctuary to guide lost travelers and protect the ancient groves.`,
+    mountain: `High in the ${biome} peaks, this resilient creature has adapted to the harsh conditions. When ${_locationContext.weather.condition} weather sweeps across the mountains at ${_locationContext.weather.temperature}°C, it scales the highest summits, seeking rare crystals and sharing mountain wisdom with those brave enough to climb.`,
+    lake: `Beneath the ${biome} waters, this peaceful spirit has dwelled for generations. During ${_locationContext.weather.season}, when the lake reflects the ${_locationContext.weather.condition} sky, it surfaces to bring tranquility to troubled souls and share the deep wisdom of still waters.`,
+    river: `Flowing through the ${biome} valleys, this swift creature has traveled every bend and rapid. When ${_locationContext.weather.condition} weather fills the river with ${_locationContext.weather.temperature}°C water, it guides wayward travelers downstream, teaching the art of going with the flow.`,
   };
 
   return (
