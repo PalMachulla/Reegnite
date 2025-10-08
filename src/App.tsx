@@ -13,6 +13,8 @@ import Collection from "./pages/Collection";
 import CaptureScreen from "./pages/CaptureScreen";
 
 function App() {
+  // Version 2.1 - Enhanced monster generation with separated AI services
+  console.log("🚀 REEGNITE v2.1 - Enhanced monster capture system deployed!");
   const { isAuthenticated } = useAuthStore();
   const { currentView } = useGameStore();
 
